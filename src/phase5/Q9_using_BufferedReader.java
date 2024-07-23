@@ -20,6 +20,8 @@ public class Q9_using_BufferedReader {
 
             System.out.println(reverse1 > reverse2 ? reverse1 : reverse2);
 
+            br.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
