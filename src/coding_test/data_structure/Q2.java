@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Q2 {
     public static void main(String[] args) {
+        // 백준: 1546번
+
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
 

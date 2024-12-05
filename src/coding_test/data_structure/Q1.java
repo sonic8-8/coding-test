@@ -12,9 +12,10 @@ public class Q1 {
         // 결론: int나 long으로 받을 수 없으니 String으로 받아라
         // 힌트: toCharArray()를 이용하라
 
-        // 손으로 풀어보기
-        // 슈도코드 작성하기
-        // 코드 구현하기
+        // 복잡한 문제일 경우
+        // 1. 손으로 풀어보기
+        // 2. 슈도코드 작성하기
+        // 3. 코드 구현하기
 
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
