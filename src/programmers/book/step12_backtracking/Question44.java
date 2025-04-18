@@ -1,6 +1,4 @@
-package programmers.book.step12;
-
-import java.util.Arrays;
+package programmers.book.step12_backtracking;
 
 public class Question44 {
     public int[][] solution(int[][] board) {

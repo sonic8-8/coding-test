@@ -1,7 +1,6 @@
-package programmers.book.step13;
+package programmers.book.step13_sorting;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class Question53 {
     public long solution(long n) {
