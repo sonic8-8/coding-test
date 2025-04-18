@@ -1,4 +1,4 @@
-package programmers.book.step13;
+package programmers.book.step13_sorting;
 
 import java.util.ArrayList;
 import java.util.Arrays;

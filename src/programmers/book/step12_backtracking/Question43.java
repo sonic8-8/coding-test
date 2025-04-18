@@ -1,4 +1,4 @@
-package programmers.book.step12;
+package programmers.book.step12_backtracking;
 
 import java.util.ArrayList;
 
