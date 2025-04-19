@@ -1,4 +1,4 @@
-package programmers.book.step11;
+package programmers.book.step11_graph;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
