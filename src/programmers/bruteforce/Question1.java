@@ -51,7 +51,7 @@ class Question1 {
 
         // 3. 에라토스테네스의 체에 따라 limit까지 배수 여부를 확인한다
         for (int i = 2; i <= limit; i++) {
-            if (number % 2 == 0) {
+            if (number % i == 0) {
                 return false;
             }
         }
