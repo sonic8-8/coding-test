@@ -25,8 +25,8 @@ public class Question14002 {
             dp[i] = 1;
         }
 
-        int maxLength = 1;
         int lastIndex = 1;
+        int maxLength = 1;
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j < i; j++) {
                 if (array[i] > array[j] && dp[j] + 1 > dp[i]) {
@@ -34,7 +34,7 @@ public class Question14002 {
                     prev[i] = j;
                 }
             }
-            if (dp[i] > maxLength) {
+            if (maxLength < dp[i]) {
                 maxLength = dp[i];
                 lastIndex = i;
             }
