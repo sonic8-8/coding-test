@@ -7,7 +7,7 @@ public class Question13023 {
     static int N, M;
     static List<Integer>[] graph;
     static boolean[] visited;
-    static boolean isExist;
+    static boolean doesExist;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,12 +38,12 @@ public class Question13023 {
             dfs(1, i);
             visited[i] = false;
 
-            if (isExist) {
+            if (doesExist) {
                 break;
             }
         }
 
-        bw.write(isExist ? "1" : "0");
+        bw.write(doesExist ? "1" : "0");
 
         br.close();
         bw.close();
@@ -51,7 +51,7 @@ public class Question13023 {
 
     private static void dfs(int depth, int current) {
         if (depth == 5) {
-            isExist = true;
+            doesExist = true;
             return;
         }
 
