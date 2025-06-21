@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.grpah;
 
 import java.io.*;
 import java.util.*;
