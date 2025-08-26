@@ -3,6 +3,25 @@ package baekjoon.grpah;
 import java.io.*;
 import java.util.*;
 
+/**
+ * 아이디어:
+ * 부분 집합 + BFS
+ * 위 2가지를 이용해 풀었습니다.
+ *
+ * 1. "부분 집합"으로 그룹을 2개로 나누는 모든 경우의 수 구하기
+ * 2. "BFS를 이용해" 한 그룹의 모든 노드가 서로 연결됐는지 확인하기
+ *
+ * 이 방법 (완전 탐색 풀이) 말고도
+ * 규칙이나 패턴을 이용해 해결할 수 있는지 고민해봤으나
+ * 오히려 구현하기가 더 복잡해지는 것 같습니다
+ * 부분 집합 풀이를 추천합니다
+ */
+
+/**
+ * 메모리: 15,364 KB
+ * 시간: 132 ms
+ * 난이도: 골드3
+ */
 public class Main_17471_게리맨더링 {
     static int N;
     static int[] population;
@@ -11,17 +30,11 @@ public class Main_17471_게리맨더링 {
     static List<Integer> groupB;
     static boolean[] visited;
 
-
     static int min;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        // 하나의 그래프를 2개의 집합으로 나누어야한다
-        // 각 집합의 원소 숫자 차이가 최소여야한다
-        // 전체 원소의 개수를 절반으로 나눈다
-        // 절반 절반으로 집합을 만들 수 있는지 확인한다
 
         N = Integer.parseInt(br.readLine());
 
@@ -52,6 +65,7 @@ public class Main_17471_게리맨더링 {
         min = Integer.MAX_VALUE;
         subset(1);
 
+        // 문제 요구 사항에 따라 두 선거구로 나눌 없는 경우에는 -1을 출력
         if (min == Integer.MAX_VALUE) {
             min = -1;
         }
@@ -62,10 +76,11 @@ public class Main_17471_게리맨더링 {
         bw.close();
     }
 
+    // 부분 집합을 이용해 그룹을 2개로 만드는 모든 경우를 생성
     private static void subset(int index) {
         if (index == N + 1) {
             if (!groupA.isEmpty() && !groupB.isEmpty()) {
-                if (isAConnectedByBfs() && isBConnectedByBfs()) {
+                if (isConnected(groupA) && isConnected(groupB)) {
                     int diff = Math.abs(calculateSum(groupA) - calculateSum(groupB));
                     min = Math.min(min, diff);
                 }
@@ -92,12 +107,13 @@ public class Main_17471_게리맨더링 {
         return sum;
     }
 
-    private static boolean isAConnectedByBfs() {
+    // BFS를 사용해 그룹 내 모든 노드가 연결되었는지 확인
+    private static boolean isConnected(List<Integer> group) {
         visited = new boolean[N + 1];
 
         Queue<Integer> queue = new ArrayDeque<>();
-        queue.add(groupA.get(0));
-        visited[groupA.get(0)] = true;
+        queue.add(group.get(0));
+        visited[group.get(0)] = true;
 
         int count = 1;
 
@@ -105,36 +121,13 @@ public class Main_17471_게리맨더링 {
             int current = queue.poll();
 
             for (int next : graph[current]) {
-                if (!visited[next] && groupA.contains(next)) {
+                if (!visited[next] && group.contains(next)) {
                     visited[next] = true;
                     queue.add(next);
                     count++;
                 }
             }
         }
-        return count == groupA.size();
-    }
-
-    private static boolean isBConnectedByBfs() {
-        visited = new boolean[N + 1];
-
-        Queue<Integer> queue = new ArrayDeque<>();
-        queue.add(groupB.get(0));
-        visited[groupB.get(0)] = true;
-
-        int count = 1;
-
-        while (!queue.isEmpty()) {
-            int current = queue.poll();
-
-            for (int next : graph[current]) {
-                if (!visited[next] && groupB.contains(next)) {
-                    visited[next] = true;
-                    queue.add(next);
-                    count++;
-                }
-            }
-        }
-        return count == groupB.size();
+        return count == group.size();
     }
 }
