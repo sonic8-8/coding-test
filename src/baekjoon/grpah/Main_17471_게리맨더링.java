@@ -7,10 +7,10 @@ import java.util.*;
  * 아이디어:
  * 부분 집합 + BFS
  * 위 2가지를 이용해 풀었습니다.
- *
+ * <p>
  * 1. "부분 집합"으로 그룹을 2개로 나누는 모든 경우의 수 구하기
  * 2. "BFS를 이용해" 한 그룹의 모든 노드가 서로 연결됐는지 확인하기
- *
+ * <p>
  * 이 방법 (완전 탐색 풀이) 말고도
  * 규칙이나 패턴을 이용해 해결할 수 있는지 고민해봤으나
  * 오히려 구현하기가 더 복잡해지는 것 같습니다
@@ -91,12 +91,12 @@ public class Main_17471_게리맨더링 {
         // 그룹 A에 포함
         groupA.add(index);
         subset(index + 1);
-        groupA.remove(groupA.size() -1);
+        groupA.remove(groupA.size() - 1);
 
         // 그룹 B에 포함
         groupB.add(index);
         subset(index + 1);
-        groupB.remove(groupB.size() -1);
+        groupB.remove(groupB.size() - 1);
     }
 
     private static int calculateSum(List<Integer> group) {
